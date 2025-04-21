@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfólio - Andrey</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap"
+        rel="stylesheet"
+    />
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">Andrey</a>
+        <nav class="nav-menu">
+            <a href="#" class="active">Início</a>
+            <a href="#">Sobre</a>
+            <a href="#">Sonhos</a>
+            <a href="#">Hobbies</a>
+            <a href="#">Contato</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="home">
+            <div class="home-content">
+                <div class="home-img">
+                    <img src="yuji-itadori-2732x2732-9268.jpg" alt="Imagem de Andrey" />
+                </div>
+
+                <div class="home-text-container">
+                    <h1>Olá, eu sou o <span>Andrey</span></h1>
+                    <h3 class="typing-text">Eu sou <span id="typing"></span></h3>
+                    <p>
+                        Sou apaixonado por tecnologia e desenvolvimento. Busco evoluir todos os dias para alcançar meus sonhos!
+                    </p>
+
+                    <div class="social-icons">
+                        <a href="#"><i class="fa-brands fa-github"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+
+                    <a href="#" class="btn">Contrate-me</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- JavaScript Typing Effect -->
+    <script>
+        const typingElement = document.getElementById("typing");
+        const roles = ["Desenvolvedor Front-end", "Designer Web", "Estudante", "Criador de Ideias"];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const currentRole = roles[roleIndex];
+            const currentText = currentRole.substring(0, charIndex);
+
+            typingElement.textContent = currentText;
+
+            if (!isDeleting && charIndex < currentRole.length) {
+                charIndex++;
+                setTimeout(type, 100);
+            } else if (isDeleting && charIndex > 0) {
+                charIndex--;
+                setTimeout(type, 50);
+            } else {
+                isDeleting = !isDeleting;
+                if (!isDeleting) {
+                    roleIndex = (roleIndex + 1) % roles.length;
+                }
+                setTimeout(type, 1000);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", type);
+    </script>
+</body>
+</html>
